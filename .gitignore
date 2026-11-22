@@ -1,0 +1,31 @@
+# Secrets
+*.json
+!config/*.json
+.env
+*.pem
+*.key
+
+# Data
+data/
+*.parquet
+*.csv
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Airflow
+airflow/logs/
+airflow/plugins/__pycache__/
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
+jars/
