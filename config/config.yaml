@@ -1,0 +1,25 @@
+project_id: my-tf-demo-260118-18758
+bucket: nyc-taxi-lakehouse-my-tf-demo-260118-18758
+region: asia-south1
+
+# Month to process (overridden by Airflow at runtime)
+year: 2024
+month: 1
+
+source:
+  trip_url: https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_{year}-{month:02d}.parquet
+  zone_url: https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv
+
+paths:
+  raw: gs://{bucket}/raw
+  bronze: gs://{bucket}/bronze/trips
+  silver: gs://{bucket}/silver/trips
+  quarantine: gs://{bucket}/quarantine/trips
+  zones: gs://{bucket}/silver/zones
+  gold: gs://{bucket}/gold
+
+bigquery:
+  dataset: nyc_taxi_gold
+
+spark:
+  gcs_jar: jars/gcs-connector-hadoop3-latest.jar
